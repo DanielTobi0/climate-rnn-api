@@ -1,0 +1,49 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment variables
+.env
+.env.local
+
+# Model artifacts
+model_cache/
+*.pt
+*.pth
+*.pkl
+
+# MLflow
+mlruns/
+mlartifacts/
+
+# Notebooks (optional, if you want to keep them)
+notebooks/
+*.ipynb_checkpoints/
+
+# Data
+datasets/*.csv
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log
+
+**.ipynb

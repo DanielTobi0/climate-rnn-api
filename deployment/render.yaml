@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: climate-rnn-api
+    env: docker
+    dockerfilePath: ./deployment/Dockerfile
+    region: oregon
+    plan: free
+    envVars:
+      - key: HF_MODEL_ID
+        value: DanielTobi0/climate-rnn-model
+      - key: HF_TOKEN
+        sync: false  # Set manually in Render dashboard (secret)
+      - key: ALLOWED_ORIGINS
+        value: "*"
+      - key: DEBUG
+        value: "false"
+    healthCheckPath: /health

@@ -1,0 +1,61 @@
+{
+  "model_type": "ClimateRNN",
+  "architecture": "LSTM",
+  "framework": "PyTorch",
+  "version": "1.0.0",
+  "hyperparameters": {
+    "input_size": 4,
+    "hidden_size": 96,
+    "num_layers": 2,
+    "dropout": 0.10027879545211107,
+    "seq_length": 30,
+    "learning_rate": 0.00037446563861783026,
+    "batch_size": 32,
+    "grad_clip_max_norm": 1.0
+  },
+  "features": {
+    "input_features": [
+      "meantemp",
+      "humidity",
+      "wind_speed",
+      "meanpressure"
+    ],
+    "target_feature": "meantemp",
+    "target_idx": 0,
+    "feature_order": "Features must be provided in exact order: meantemp, humidity, wind_speed, meanpressure"
+  },
+  "preprocessing": {
+    "scaler": "MinMaxScaler",
+    "fit_on": "training_data",
+    "scaler_file": "scaler.pkl"
+  },
+  "performance": {
+    "test_mae": 1.93,
+    "test_rmse": 2.422,
+    "validation_mse": 0.007749,
+    "unit": "celsius"
+  },
+  "training": {
+    "dataset": "Daily Delhi Climate",
+    "training_samples": 1170,
+    "validation_samples": 292,
+    "test_samples": 114,
+    "training_date_range": "2013-01-01 00:00:00 to 2017-01-01 00:00:00",
+    "test_date_range": "2017-01-01 00:00:00 to 2017-04-24 00:00:00",
+    "optimizer": "Adam",
+    "scheduler": "ReduceLROnPlateau",
+    "epochs": 50
+  },
+  "inference": {
+    "input_format": "30-day sequence of 4 climate features",
+    "output_format": "Next-day temperature prediction in Celsius",
+    "device": "cpu",
+    "expected_latency_ms": 20
+  },
+  "metadata": {
+    "created_at": "2026-05-15",
+    "pytorch_version": "2.12.0+cu130",
+    "python_version": "3.11+",
+    "license": "MIT"
+  }
+}
